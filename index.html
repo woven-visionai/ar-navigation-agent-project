@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Embodied AR Navigation Agent: Integrating BIM with RAG for Language Guidance</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1 class="title">An Embodied AR Navigation Agent</h1>
+            <p class="subtitle">Integrating BIM with Retrieval-Augmented Generation for Language Guidance</p>
+            
+            <div class="conference-info">
+                <span class="conference">ISMAR 2025</span>
+            </div>
+            
+            <div class="authors">
+                <span class="author">Hsuan-Kung Yang</span>
+                <span class="author">Tsu-Ching Hsiao</span>
+                <span class="author">Ryoichiro Oka</span>
+                <span class="author">Ryuya Nishino</span>
+                <span class="author">Satoko Tofukuji</span>
+                <span class="author">Norimasa Kobori</span>
+            </div>
+            
+            <div class="affiliations">
+                <span class="affiliation">Woven by Toyota, Inc., Japan</span>
+            </div>
+            
+            <div class="links">
+                <a href="preprint.pdf" class="btn btn-primary" target="_blank">📄 Preprint</a>
+                <a href="#" class="btn btn-secondary" target="_blank">📊 ArXiv (Coming Soon)</a>
+            </div>
+            
+            <!-- Teaser Figure -->
+            <div class="teaser-figure">
+                <img src="images/teaser-2.png" alt="AR Navigation System Overview" class="teaser-image">
+                <p class="teaser-caption">
+                    The proposed AR navigation system integrates a multi-agent RAG framework with BIM data to support flexible natural language queries for goal retrieval, interaction, and navigation. Communication is enabled through an AR embodied agent interface.
+                </p>
+            </div>
+        </header>
+
+        <!-- Abstract Section -->
+        <section class="section">
+            <h2>Abstract</h2>
+            <p class="abstract">
+                Delivering intelligent and adaptive navigation assistance in augmented reality (AR) requires more than visual cues—it demands systems capable of interpreting flexible user intent and reasoning over both spatial and semantic context. Prior AR navigation systems often rely on rigid input schemes or predefined commands, which limit the utility of rich building data and hinder natural interaction. In this work, we propose an embodied AR navigation system that integrates Building Information Modeling (BIM) with a multi-agent retrieval-augmented generation (RAG) framework to support flexible, language-driven goal retrieval and route planning. The system orchestrates three language agents, Triage, Search, and Response, built on large language models (LLMs), which enables robust interpretation of open-ended queries and spatial reasoning using BIM data. Navigation guidance is delivered through an embodied AR agent, equipped with voice interaction and locomotion, to enhance user experience. A real-world user study yields a System Usability Scale (SUS) score of 80.5, indicating excellent usability, and comparative evaluations show that the embodied interface can significantly improve users' perception of system intelligence. These results underscore the importance and potential of language-grounded reasoning and embodiment in the design of user-centered AR navigation systems.
+            </p>
+        </section>
+
+        <!-- Multi-Agent RAG System Section -->
+        <section class="section">
+            <h2>Multi-Agent RAG System for Navigation</h2>
+            <div class="method-overview">
+                <div class="figure-container large">
+                    <img src="images/overview.png" alt="System Architecture Overview" class="method-figure">
+                </div>
+                <p>
+                    Our approach combines Building Information Modeling (BIM) with a multi-agent retrieval-augmented generation (RAG) framework. The system preprocesses BIM data into a vector database using sentence transformers, enabling semantic similarity search. Three specialized agents orchestrate the navigation process: the <strong>Triage Agent</strong> classifies user queries and extracts semantic targets, the <strong>Search Agent</strong> performs vector similarity search and candidate selection using LLM reasoning, and the <strong>Response Agent</strong> generates contextually appropriate navigation instructions. An embodied AR agent delivers guidance through voice interaction, natural locomotion, and adaptive synchronization with user movement.
+                </p>
+            </div>
+        </section>
+
+        <!-- Video Demonstrations Section -->
+        <section class="section">
+            <h2>System Demonstrations</h2>
+            <div class="video-container">
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video autoplay muted loop>
+                            <source src="videos/demo/demo-1-compressed.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-caption">
+                            <div class="query-info">
+                                <span class="query-label">User Query:</span>
+                                <span class="query-text">"Hi, can you take me to somewhere that I can get some food?"</span>
+                            </div>
+                            <div class="goal-info">
+                                <span class="goal-label">Retrieved Goal:</span>
+                                <span class="goal-text">Coffee Shop</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item">
+                        <video autoplay muted loop>
+                            <source src="videos/demo/demo-2-compressed.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-caption">
+                            <div class="query-info">
+                                <span class="query-label">User Query:</span>
+                                <span class="query-text">"I want to go to the reception counter."</span>
+                            </div>
+                            <div class="goal-info">
+                                <span class="goal-label">Retrieved Goal:</span>
+                                <span class="goal-text">Counter Reception</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item">
+                        <video autoplay muted loop>
+                            <source src="videos/demo/demo-3-compressed.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-caption">
+                            <div class="query-info">
+                                <span class="query-label">User Query:</span>
+                                <span class="query-text">"Can you take me to meeting room 2015?"</span>
+                            </div>
+                            <div class="goal-info">
+                                <span class="goal-label">Retrieved Goal:</span>
+                                <span class="goal-text">Meeting Room V2015</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experimental Results Section -->
+        <section class="section">
+            <h2>Comparative User Studies</h2>
+            
+            <!-- Interface and Evaluation Comparison -->
+            <div class="shared-comparison-container">
+                <div class="comparison-content-grid">
+                    <div class="comparison-item">
+                        <h3>Navigation Interface Design</h3>
+                        <div class="comparison-figure-container">
+                            <img src="images/arrow-avatar-interface.png" alt="Interface Comparison" class="comparison-figure">
+                            <p class="comparison-caption">
+                                Illustrations of the AR navigation schemes: (a) the arrow-only baseline scheme, and (b) the proposed embodied agent scheme, which complements arrows with a virtual agent.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <h3>Comparative Evaluation</h3>
+                        <div class="comparison-figure-container">
+                            <img src="images/user-study.png" alt="Comparative User Ratings" class="comparison-figure">
+                            <p class="comparison-caption">
+                                Comparative evaluation of user preferences between arrow-only and embodied agent interfaces. Positive values indicate preference toward the embodied agent, showing significant improvements in perceived intelligence, engagement, and clarity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Study Results Table -->
+            <div class="table-container">
+                <div class="modern-table-wrapper">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Median Score</th>
+                                <th>p-value</th>
+                                <th>Effect Size (r)</th>
+                                <th>Preference Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clarity & Usability</td>
+                                <td>4.0</td>
+                                <td>.002 **</td>
+                                <td>0.81</td>
+                                <td><span class="preference-badge">Agent > Arrow</span></td>
+                            </tr>
+                            <tr>
+                                <td>Engagement & Enjoyment</td>
+                                <td>5.0</td>
+                                <td>&lt; .001 ***</td>
+                                <td>1.00</td>
+                                <td><span class="preference-badge">Agent > Arrow</span></td>
+                            </tr>
+                            <tr>
+                                <td>Perceived Intelligence</td>
+                                <td>5.0</td>
+                                <td>&lt; .001 ***</td>
+                                <td>1.00</td>
+                                <td><span class="preference-badge">Agent > Arrow</span></td>
+                            </tr>
+                            <tr>
+                                <td>Trustworthiness</td>
+                                <td>4.0</td>
+                                <td>.038 *</td>
+                                <td>0.61</td>
+                                <td><span class="preference-badge">Agent > Arrow</span></td>
+                            </tr>
+                            <tr>
+                                <td>Cognitive Load</td>
+                                <td>4.0</td>
+                                <td>.040 *</td>
+                                <td>0.57</td>
+                                <td><span class="preference-badge">Agent > Arrow</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-caption">
+                    <strong>User Study Results (N = 20):</strong> Results from Wilcoxon Signed-Rank Test comparing embodied agent vs. arrow-only interface (Neutral Midpoint = 3). 
+                    Significance levels: p &lt; .05 (*), p &lt; .01 (**), p &lt; .001 (***)
+                </p>
+            </div>
+
+            <!-- SUS Results - Single Column -->
+            <div class="sus-results-section">
+                <h3>System Usability Scale (SUS) Results</h3>
+                <div class="sus-results-container">
+                    <div class="sus-figure-container">
+                        <img src="images/sus_results.png" alt="SUS Results" class="sus-figure">
+                    </div>
+                    <p class="sus-description">
+                        Achieved mean SUS score of 80.5 (SD = 11.5), indicating excellent system usability. Participants rated highly on ease of use (4.35), learnability (4.65), and system integration (4.25). Labels marked with an asterisk (*) indicate reverse-scored items.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Results Section -->
+        <section class="section">
+            <h2>Qualitative Results</h2>
+            
+            <div class="additional-results-container">
+                <div class="additional-results-content">
+                    <!-- Case Study Examples -->
+                    <div class="result-item">
+                        <h3>Case Study Examples</h3>
+                        <div class="result-figure-container">
+                            <img src="images/multi-agent-example.png" alt="Query Sample Cases" class="result-figure">
+                            <p class="result-description">
+                                Examples of successful goal retrieval and navigation route generation demonstrating the system's ability to interpret natural language queries in context, including indirect queries like "I'm hungry, where can I find food?" or queries include context like "meeting room with more than 10 seats".
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- User Trajectories -->
+                    <div class="result-item">
+                        <h3>User Trajectories</h3>
+                        <div class="trajectory-video-container">
+                            <p class="result-description">
+                                Visualizations of user trajectories and navigation paths traversed by the embodied agent.<br>
+                                Purple lines represent navigation routes; aqua blue lines indicate actual user walking trajectories.
+                            </p>
+                            <div class="trajectory-video-grid">
+                                <div class="trajectory-video-item">
+                                    <video autoplay muted loop>
+                                        <source src="videos/user-trajectory/user-trajectory-1-compressed.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="trajectory-info">
+                                        <div class="trajectory-query">
+                                            <span class="trajectory-label">User Query:</span>
+                                            <span class="trajectory-text">I would like to get some information about this building can you tell me where should I go?</span>
+                                        </div>
+                                        <div class="trajectory-destination">
+                                            <span class="trajectory-label">Retrieved Goal:</span>
+                                            <span class="trajectory-text">Counter Reception</span>
+                                        </div>
+                                        <div class="trajectory-response">
+                                            <span class="trajectory-label">Response:</span>
+                                            <span class="trajectory-text">Sure, I can help you with that. Please head over to the information desk.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="trajectory-video-item">
+                                    <video autoplay muted loop>
+                                        <source src="videos/user-trajectory/user-trajectory-2-compressed.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="trajectory-info">
+                                        <div class="trajectory-query">
+                                            <span class="trajectory-label">User Query:</span>
+                                            <span class="trajectory-text">I want to go to the meeting room of 2001 could you take me?</span>
+                                        </div>
+                                        <div class="trajectory-destination">
+                                            <span class="trajectory-label">Retrieved Goal:</span>
+                                            <span class="trajectory-text">Meeting Room V2001</span>
+                                        </div>
+                                        <div class="trajectory-response">
+                                            <span class="trajectory-label">Response:</span>
+                                            <span class="trajectory-text">Sure, I can take you to the meeting room V2001.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="trajectory-video-item">
+                                    <video autoplay muted loop>
+                                        <source src="videos/user-trajectory/user-trajectory-3-compressed.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="trajectory-info">
+                                        <div class="trajectory-query">
+                                            <span class="trajectory-label">User Query:</span>
+                                            <span class="trajectory-text">OK please take me to the V2014.</span>
+                                        </div>
+                                        <div class="trajectory-destination">
+                                            <span class="trajectory-label">Retrieved Goal:</span>
+                                            <span class="trajectory-text">Meeting Room V2014</span>
+                                        </div>
+                                        <div class="trajectory-response">
+                                            <span class="trajectory-label">Response:</span>
+                                            <span class="trajectory-text">Let's head to meeting room V2014, also known as Sakura.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="trajectory-video-item">
+                                    <video autoplay muted loop>
+                                        <source src="videos/user-trajectory/user-trajectory-4-compressed.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="trajectory-info">
+                                        <div class="trajectory-query">
+                                            <span class="trajectory-label">User Query:</span>
+                                            <span class="trajectory-text">Could you please take me to the men's toilet?</span>
+                                        </div>
+                                        <div class="trajectory-destination">
+                                            <span class="trajectory-label">Retrieved Goal:</span>
+                                            <span class="trajectory-text">Men's Toilet</span>
+                                        </div>
+                                        <div class="trajectory-response">
+                                            <span class="trajectory-label">Response:</span>
+                                            <span class="trajectory-text">Sure, let me take you to the men's toilet.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Citation Section -->
+        <section class="section citation">
+            <h2>Citation</h2>
+            <div class="citation-box">
+                <pre><code>@inproceedings{embodied_ar_navigation_2025,
+  title={An Embodied AR Navigation Agent: Integrating BIM with Retrieval-Augmented Generation for Language Guidance},
+  author={Yang, Hsuan-Kung and Hsiao, Tsu-Ching and Oka, Ryoichiro and Nishino, Ryuya and Tofukuji, Satoko and Kobori, Norimasa},
+  booktitle={Proceedings of the IEEE International Symposium on Mixed and Augmented Reality (ISMAR)},
+  year={2025},
+}</code></pre>
+            </div>
+        </section>
+    </div>
+
+    <div id="vrm-container"></div>
+
+    <script type="module">
+        import { VRMAvatar } from './vrm-avatar.js';
+        
+        window.addEventListener('DOMContentLoaded', async () => {
+            console.log('Initializing enhanced VRM Avatar for academic website...');
+            
+            window.avatar = new VRMAvatar();
+            const success = await window.avatar.init('vrm-container', './Mahotsukai.vrm', './pose.vroidpose');
+        });
+    </script>
+</body>
+</html>
