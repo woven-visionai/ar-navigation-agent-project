@@ -73,6 +73,34 @@ body {
     font-weight: 500;
 }
 
+.author-link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+    display: inline;
+}
+
+.author-link:hover {
+    color: #00c896;
+    text-decoration: none;
+}
+
+.author-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #007bff 0%, #00c896 100%);
+    transition: width 0.3s ease;
+}
+
+.author-link:hover::after {
+    width: 100%;
+}
+
 .conference-info {
     display: flex;
     justify-content: center;
